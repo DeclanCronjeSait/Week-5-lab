@@ -82,9 +82,15 @@ public class ShoppingListServlet extends HttpServlet
                 getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
                 return;
             }
+            
+            if(action.equals("logout"))
+            {
+                session = request.getSession();
+                session.invalidate();
+                getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+            }
         }
         
-
         getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 }
